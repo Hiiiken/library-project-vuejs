@@ -1,18 +1,18 @@
 <template>
   <form @submit.prevent="addNewBook">
     <label>Add a new book</label>
-    <input v-model="bookTitle" type="text" id="title" placeholder="Title">
-    <input v-model="bookAuthor" type="text" id="author" placeholder="Author">
-    <input v-model="bookPages" type="number" id="pages" placeholder="Number of pages">
-    <select v-model="bookStatus" name="status" id="status" >
-      <option value="Have you read it?" disabled="" selected="">Have you read it?</option>
+    <input v-model="bookTitle" type="text" placeholder="Title" required>
+    <input v-model="bookAuthor" type="text" placeholder="Author" required>
+    <input v-model="bookPages" type="number" placeholder="Number of pages">
+    <select v-model="bookStatus" required>
+      <option disabled value="">Have you read it?</option>
       <option value="Read">Yes</option>
       <option value="Not Read">No</option>
     </select>
     <button type="submit" id="submit">New Book</button>
   </form>
-  <p>{{ myLibrary }}</p>
-  <p>Array length: {{ myLibrary.length }}</p>
+  <!-- <p>{{ myLibrary }}</p> -->
+  <!-- <p>Array length: {{ myLibrary.length }}</p> -->
   <ul>
     <li
       class="book-card"
@@ -38,8 +38,8 @@ export default {
     return {
       bookTitle: '',
       bookAuthor: '',
-      bookPages: 0,
-      bookStatus: 'Not Read',
+      bookPages: '-',
+      bookStatus: '',
       myLibrary: [
         {
           id: 1,

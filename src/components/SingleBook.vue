@@ -1,17 +1,18 @@
 <template>
-  <ul>
-    <li
+  <li
       class="book-card"
       v-for="(book, index) in myLibrary"
       v-bind:key="book.id"
     >
-    {{ book.title }}
+      <h3>{{ book.title }}</h3>
+      <p>Author: {{ book.author }}</p>
+      <p>Pages: {{ book.pages }}</p>
+      <p>Status: {{ book.status }}</p>
     <!-- <button @click="this.myLibrary.splice(index, 1)"> -->
     <button @click="deleteBook(book, index)">
       Delete
     </button>
     </li>
-  </ul>
 </template>
 
 <script>
