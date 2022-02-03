@@ -1,15 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>Library VueJS Project</h1>
+  <AddBookForm />
+  <!-- <SingleBook /> -->
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AddBookForm from './components/AddBookForm.vue'
+// import SingleBook from './components/SingleBook.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components: { 
+    AddBookForm
   }
 }
 </script>
