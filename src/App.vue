@@ -1,12 +1,11 @@
 <template>
   <h1>Library VueJS Project</h1>
   <AddBookForm />
-  <!-- <SingleBook /> -->
 </template>
 
 <script>
 import AddBookForm from './components/AddBookForm.vue'
-// import SingleBook from './components/SingleBook.vue'
+// import EditBookModal from './components/EditBookModal.vue'
 
 export default {
   name: 'App',

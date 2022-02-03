@@ -1,4 +1,5 @@
 <template>
+  <!-- <EditBookModal /> -->
   <form @submit.prevent="addNewBook">
     <label>Add a new book</label>
     <input v-model="bookTitle" type="text" placeholder="Title" required>
@@ -13,6 +14,7 @@
   </form>
   <!-- <p>{{ myLibrary }}</p> -->
   <!-- <p>Array length: {{ myLibrary.length }}</p> -->
+  
   <ul>
     <li
       class="book-card"
@@ -23,22 +25,38 @@
       <p>Author: {{ book.author }}</p>
       <p>Pages: {{ book.pages }}</p>
       <p>Status: {{ book.status }}</p>
-    <!-- <button @click="this.myLibrary.splice(index, 1)"> -->
-    <button @click="deleteBook(book, index)">
-      Delete
-    </button>
+
+      <button @click="deleteBook(book, index)">
+        Delete
+      </button>
+      <!-- <button @click="showModal = true" class="btn-edit"> -->
+      <button @click="editBook(bk, indx)" class="btn-edit">
+        Edit
+      </button>
+
+      <edit-book-modal 
+        :book-title="book.title" 
+        :book-author="book.author"
+        v-if="showModal" 
+        @close="showModal = false">
+      </edit-book-modal>
     </li>
   </ul>
 </template>
 
 <script>
+import EditBookModal from './EditBookModal.vue'
+
 export default {
-  name: 'Sidebar',
+  name: 'AddBookForm',
+  components: { 
+    EditBookModal
+  },
   data() {
     return {
       bookTitle: '',
       bookAuthor: '',
-      bookPages: '-',
+      bookPages: 0,
       bookStatus: '',
       myLibrary: [
         {
@@ -47,8 +65,16 @@ export default {
           author: 'J.K. Rowling',
           pages: 650,
           status: 'Read'
+        },
+        {
+          id: 2,
+          title: 'Game of Thrones',
+          author: 'G.R.R. Martin',
+          pages: 800,
+          status: 'Read'
         }
-      ]
+      ],
+      showModal: false
     }
   },
   methods: {
@@ -68,12 +94,17 @@ export default {
       if(confirm('Are you sure?')) {
         this.myLibrary.splice(index, 1)
       }
+    },
+    editBook(bk, indx) {
+
+        this.showModal = true
+      // this.myLibrary.title = book
     }
   }
 }
 </script>
 
-<style scoped>
+<style>
   form {
     background-color: #313a46;
     padding: 40px;
@@ -107,6 +138,7 @@ export default {
     display: block;
     margin: 16px auto 0;
     border-radius: 3px;
+    cursor: pointer;
   }
 
   ul {
@@ -128,5 +160,9 @@ export default {
     padding: 8px 16px;
     background-color: crimson;
     color: white;
+  }
+
+  button.btn-edit {
+    background-color: green;
   }
 </style>
