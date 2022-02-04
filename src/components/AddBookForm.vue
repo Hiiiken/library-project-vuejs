@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="addNewBook">
+  <form @submit.prevent="addNewBook" class="add-book-form">
     <label>Add a new book</label>
     <input v-model="bookTitle" type="text" placeholder="Title" required>
     <input v-model="bookAuthor" type="text" placeholder="Author" required>
@@ -107,15 +107,12 @@ export default {
         this.myLibrary.splice(index, 1)
       }
     }
-    // editBook() {
-    //     this.showModal = true
-    // }
   }
 }
 </script>
 
 <style>
-  form {
+  .add-book-form {
     background-color: #313a46;
     padding: 40px;
     text-align: center;

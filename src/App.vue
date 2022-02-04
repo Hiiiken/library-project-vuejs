@@ -1,5 +1,7 @@
 <template>
-  <h1>Library VueJS Project</h1>
+  <div class="test">
+    <h1>Library VueJS Project</h1>
+  </div>
   <add-book-form></add-book-form>
 </template>
 
@@ -15,13 +17,18 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+  .test {
+    background-color: red;
+    text-align: center;
+
+    h1 {
+      color: yellow;
+    }
+  }
+
+
+  body {
+    background: lightblue;
+  }
 </style>

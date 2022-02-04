@@ -4,16 +4,19 @@
       <div class="modal-wrapper">
         <div class="modal-container">
           <div class="modal-header">
-            default header
+            <h2 class="modal-title">Edit '{{ bookTitle }}' Book Information</h2>
           </div>
 
           <div class="modal-body">
-            default body
             <form>
-              <input v-model="bookTitle" type="text" placeholder="Title" required>
-              <input v-model="bookAuthor" type="text" placeholder="Author" required>
-              <input v-model="bookPages" type="number" placeholder="Number of pages">
-              <select v-model="bookStatus" required>
+              <label for="book-title">Book Title</label>
+              <input v-model="bookTitle" id="book-title" type="text" placeholder="Title" required>
+              <label for="book-author">Author Name</label>
+              <input v-model="bookAuthor" id="book-author" type="text" placeholder="Author" required>
+              <label for="book-pages">Number of Pages</label>
+              <input v-model="bookPages" id="book-pages" type="number" placeholder="Number of pages">
+              <label for="book-status">Have You Read It?</label>
+              <select v-model="bookStatus" id="book-status" required>
                 <option disabled value="">Have you read it?</option>
                 <option value="Read">Yes</option>
                 <option value="Not Read">No</option>
@@ -22,8 +25,11 @@
           </div>
 
           <div class="modal-footer">
-            <button class="modal-default-button" @click="$emit('close')">
-              Close
+            <button class="modal-button-save" @click="$emit('save')">
+              Save
+            </button>
+            <button class="modal-button-cancel" @click="$emit('close')">
+              Cancel
             </button>
           </div>
         </div>
@@ -58,44 +64,61 @@ export default {
   }
 
   .modal-container {
+    box-sizing: border-box;
     width: 600px;
     margin: 0 auto;
     padding: 32px;
     background-color: white;
-    border-radius: 2px;
+    border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
     transition: all 0.3s ease;
     font-family: 'Montserrat', sans-serif;
   }
 
-  .modal-header h3 {
+  .modal-header .modal-title {
     margin-top: 0;
-    color: #42b983;
+    color: #6c757d;
   }
 
-  .modal-body {
-    margin: 20px 0;
-    padding: 10px;
-    background-color: #eee;
-  }
-
-  form {
+  .modal-body form {
     text-align: left;
+    padding: 16px 16px 0;
+    margin-bottom: 8px;
   }
 
-  button {
-    padding: 16px 40px;
-    background-color: blueviolet;
+  .modal-body form label {
     font-size: 12px;
+    margin-bottom: 8px;
+    font-weight: 500;
     text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 0.5px;
+    letter-spacing: .5px;
+  }
+
+  .modal-body input, select {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 16px;
+  }
+
+  .modal-footer {
+    display: flex;
+    align-items: center;
+  }
+
+  .modal-footer button {
+    padding: 16px 40px;
+  }
+
+  .modal-button-save {
+    background: lightskyblue;
+    margin-right: 8px;
+    color: black;
+  }
+
+  .modal-button-cancel {
+    background: #98a6ad;
+    border-color: #98a6ad;
     color: white;
-    border: 1px solid black;
-    display: block;
-    margin: 16px auto 0;
-    border-radius: 3px;
-    cursor: pointer;
   }
 
   /*
