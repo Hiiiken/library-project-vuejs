@@ -5,4 +5,4 @@ createApp(App).mount('#app')
 
 // STYLE FILES
 import './assets/reset.css';
-// import './assets/grid.scss';
+import './assets/grid.scss';

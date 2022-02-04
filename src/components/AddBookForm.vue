@@ -1,19 +1,50 @@
 <template>
-  <form @submit.prevent="addNewBook" class="add-book-form">
-    <label>Add a new book</label>
-    <input v-model="bookTitle" type="text" placeholder="Title" required>
-    <input v-model="bookAuthor" type="text" placeholder="Author" required>
-    <input v-model="bookPages" type="number" placeholder="Number of pages">
-    <select v-model="bookStatus" required>
-      <option disabled value="">Have you read it?</option>
-      <option value="Read">Yes</option>
-      <option value="Not Read">No</option>
-    </select>
-    <button type="submit" id="submit">New Book</button>
-  </form>
-  <!-- <p>{{ myLibrary }}</p> -->
-  <!-- <p>Array length: {{ myLibrary.length }}</p> -->
-  <ul>
+  <div class="container-fl">
+    <div class="grid">
+      <div class="col col-3 col-xl">
+        <div class="sidebar">
+          <div class="sidebar-widget">
+            <h2 class="sec-title">Add a new book</h2>
+            <form @submit.prevent="addNewBook" class="add-book-form">
+              <!-- <label>Add a new book</label> -->
+              <input v-model="bookTitle" type="text" placeholder="Title" required>
+              <input v-model="bookAuthor" type="text" placeholder="Author" required>
+              <input v-model="bookPages" type="number" placeholder="Number of pages">
+              <select v-model="bookStatus" required>
+                <option disabled value="">Have you read it?</option>
+                <option value="Read">Yes</option>
+                <option value="Not Read">No</option>
+              </select>
+              <button type="submit" class="btn btn-submit" id="submit">New Book</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col col-9 col-xl">
+        <div class="main-content">
+            <h1 class="sec-title">My Books</h1>
+            <div class="book-list">
+              <ul class="grid">
+                  <single-book
+                    class="col col-4 col-lg book-card"
+                    v-for="(book, index) in myLibrary"
+                    v-bind:key="book.id"
+                    :book-title="book.title"
+                    :book-author="book.author"
+                    :book-pages="book.pages"
+                    :book-status="book.status"
+                    @delete="deleteBook(book, index)"
+                  >
+                  </single-book>
+              </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <ul>
     <single-book
       class="book-card"
       v-for="(book, index) in myLibrary"
@@ -25,7 +56,7 @@
       @delete="deleteBook(book, index)"
     >
     </single-book>
-  </ul>
+  </ul> -->
 
   <!-- <ul>
     <li
@@ -111,65 +142,48 @@ export default {
 }
 </script>
 
-<style>
-  .add-book-form {
+<style lang="scss">
+  .sidebar {
     background-color: #313a46;
-    padding: 40px;
-    text-align: center;
-  }
+    height: 100vh;
+    padding: 50px 40px;
+    margin-left: 12px * -1;
+    margin-right: 12px * -1;
 
-  label {
-    font-size: 24px;
-    display: block;
-    line-height: 1.2em;
-    margin-bottom: 16px;
-    color: white;
-  }
+    h2 {
+      color: #fff;
+    }
 
-  input, select {
-    padding: 16px;
-    border: 1px solid black;
-    border-radius: 3px;
-    margin: 10px;
-  }
+    .sidebar-widget {
+      margin-bottom: 50px;
+    }
 
-  button {
-    padding: 16px 40px;
-    background-color: lightskyblue;
-    font-size: 12px;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    color: black;
-    border: 1px solid black;
-    display: block;
-    margin: 16px auto 0;
-    border-radius: 3px;
-    cursor: pointer;
-  }
+    @media only screen and (max-width: 1200px) {
+      height: auto;
+      display: flex;
+      justify-content: space-between;
 
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+      .sidebar-widget {
+          width: 100%;
+          margin-bottom: 0;
+      }
 
-  /* .book-card {
-    background-color: #eee;
-    padding: 24px;
-    margin: 16px auto;
-    max-width: 650px;
-    text-align: left;
-  }
+      .widget-library-log {
+          margin-left: 24px;
+      }
+    }
 
-  .book-card button {
-    margin: 16px 0 0 0;
-    padding: 8px 16px;
-    background-color: crimson;
-    color: white;
-  }
+    @media only screen and (max-width: 624px) {
+      display: block;
 
-  button.btn-edit {
-    background-color: green;
-  } */
+      .widget-library-log {
+          margin-left: 0;
+          margin-top: 30px;
+      }
+    }
+
+    @media only screen and (max-width: 480px) {
+      padding: 30px 30px;
+    }
+  }
 </style>
