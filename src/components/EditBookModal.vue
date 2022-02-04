@@ -12,12 +12,12 @@
             <form>
               <input v-model="bookTitle" type="text" placeholder="Title" required>
               <input v-model="bookAuthor" type="text" placeholder="Author" required>
-              <!-- <input v-model="bookPages" type="number" placeholder="Number of pages">
+              <input v-model="bookPages" type="number" placeholder="Number of pages">
               <select v-model="bookStatus" required>
                 <option disabled value="">Have you read it?</option>
                 <option value="Read">Yes</option>
                 <option value="Not Read">No</option>
-              </select> -->
+              </select>
             </form>
           </div>
 
@@ -35,7 +35,7 @@
 <script>
 export default {
   name: 'EditBookModal',
-  props: ['bookTitle', 'bookAuthor']
+  props: ['bookTitle', 'bookAuthor', 'bookPages', 'bookStatus']
 }
 </script>
 

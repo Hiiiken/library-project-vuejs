@@ -1,5 +1,4 @@
 <template>
-  <!-- <EditBookModal /> -->
   <form @submit.prevent="addNewBook">
     <label>Add a new book</label>
     <input v-model="bookTitle" type="text" placeholder="Title" required>
@@ -14,8 +13,21 @@
   </form>
   <!-- <p>{{ myLibrary }}</p> -->
   <!-- <p>Array length: {{ myLibrary.length }}</p> -->
-  
   <ul>
+    <single-book
+      class="book-card"
+      v-for="(book, index) in myLibrary"
+      v-bind:key="book.id"
+      :book-title="book.title"
+      :book-author="book.author"
+      :book-pages="book.pages"
+      :book-status="book.status"
+      @delete="deleteBook(book, index)"
+    >
+    </single-book>
+  </ul>
+
+  <!-- <ul>
     <li
       class="book-card"
       v-for="(book, index) in myLibrary"
@@ -29,7 +41,6 @@
       <button @click="deleteBook(book, index)">
         Delete
       </button>
-      <!-- <button @click="showModal = true" class="btn-edit"> -->
       <button @click="editBook(bk, indx)" class="btn-edit">
         Edit
       </button>
@@ -41,16 +52,17 @@
         @close="showModal = false">
       </edit-book-modal>
     </li>
-  </ul>
+  </ul> -->
 </template>
 
 <script>
+import SingleBook from './SingleBook.vue'
 import EditBookModal from './EditBookModal.vue'
 
 export default {
   name: 'AddBookForm',
   components: { 
-    EditBookModal
+    SingleBook, EditBookModal
   },
   data() {
     return {
@@ -73,8 +85,8 @@ export default {
           pages: 800,
           status: 'Read'
         }
-      ],
-      showModal: false
+      ]
+      // showModal: false
     }
   },
   methods: {
@@ -94,12 +106,10 @@ export default {
       if(confirm('Are you sure?')) {
         this.myLibrary.splice(index, 1)
       }
-    },
-    editBook(bk, indx) {
-
-        this.showModal = true
-      // this.myLibrary.title = book
     }
+    // editBook() {
+    //     this.showModal = true
+    // }
   }
 }
 </script>
@@ -147,7 +157,7 @@ export default {
     margin: 0;
   }
 
-  .book-card {
+  /* .book-card {
     background-color: #eee;
     padding: 24px;
     margin: 16px auto;
@@ -164,5 +174,5 @@ export default {
 
   button.btn-edit {
     background-color: green;
-  }
+  } */
 </style>
