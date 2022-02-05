@@ -19,7 +19,8 @@
           :book-pages="bookPages"
           :book-status="bookStatus"
           v-if="showModal" 
-          @close="showModal = false">
+          @close="showModal = false"
+          @save="$emit('save')">
         </edit-book-modal>
       </div>
     </li>
@@ -33,7 +34,11 @@ export default {
   props: ['bookTitle', 'bookAuthor', 'bookPages', 'bookStatus'],
   data() {
     return {
-      showModal: false
+      showModal: false,
+      newbookTitle: '',
+      newbookAuthor: '',
+      newbookPages: 0,
+      newbookStatus: ''
     }
   },
   components: {

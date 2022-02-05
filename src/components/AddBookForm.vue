@@ -1,4 +1,5 @@
 <template>
+  <p>{{myLibrary}}</p>
   <div class="container-fl">
     <div class="grid">
       <div class="col col-3 col-xl">
@@ -18,6 +19,13 @@
               <button type="submit" class="btn btn-submit" id="submit">New Book</button>
             </form>
           </div>
+          <div class="sidebar-widget widget-library-log">
+            <library-log
+              :my-library="myLibrary.length"
+              
+            >
+            </library-log>
+          </div>
         </div>
       </div>
 
@@ -34,7 +42,7 @@
                     :book-pages="book.pages"
                     :book-status="book.status"
                     @delete="deleteBook(book, index)"
-                  >
+                    @save="saveEditedBook(book, index)">
                   </single-book>
               </ul>
             </div>
@@ -42,57 +50,17 @@
       </div>
     </div>
   </div>
-
-  <!-- <ul>
-    <single-book
-      class="book-card"
-      v-for="(book, index) in myLibrary"
-      v-bind:key="book.id"
-      :book-title="book.title"
-      :book-author="book.author"
-      :book-pages="book.pages"
-      :book-status="book.status"
-      @delete="deleteBook(book, index)"
-    >
-    </single-book>
-  </ul> -->
-
-  <!-- <ul>
-    <li
-      class="book-card"
-      v-for="(book, index) in myLibrary"
-      v-bind:key="book.id"
-    >
-      <h3>{{ book.title }}</h3>
-      <p>Author: {{ book.author }}</p>
-      <p>Pages: {{ book.pages }}</p>
-      <p>Status: {{ book.status }}</p>
-
-      <button @click="deleteBook(book, index)">
-        Delete
-      </button>
-      <button @click="editBook(bk, indx)" class="btn-edit">
-        Edit
-      </button>
-
-      <edit-book-modal 
-        :book-title="book.title" 
-        :book-author="book.author"
-        v-if="showModal" 
-        @close="showModal = false">
-      </edit-book-modal>
-    </li>
-  </ul> -->
 </template>
 
 <script>
 import SingleBook from './SingleBook.vue'
 import EditBookModal from './EditBookModal.vue'
+import LibraryLog from './LibraryLog.vue'
 
 export default {
   name: 'AddBookForm',
   components: { 
-    SingleBook, EditBookModal
+    SingleBook, EditBookModal, LibraryLog
   },
   data() {
     return {
@@ -115,8 +83,11 @@ export default {
           pages: 800,
           status: 'Read'
         }
-      ]
-      // showModal: false
+      ],
+      newbookTitle: '',
+      newbookAuthor: '',
+      newbookPages: 0,
+      newbookStatus: ''
     }
   },
   methods: {
@@ -136,6 +107,23 @@ export default {
       if(confirm('Are you sure?')) {
         this.myLibrary.splice(index, 1)
       }
+    },
+    saveEditedBook(bk, index) {
+      // bk.title = bk.title
+      // bk.author = 'AUTHORTEST'
+      // bk.pages = 0
+      // bk.status = 'FINISHED'
+      // this.myLibrary.splice(index, 1, bk)
+
+      this.myLibrary.push(
+        { 
+          id: bk.id, 
+          title: bk.title,
+          author: bk.author,
+          pages: bk.pages,
+          status: bk.status
+        }
+      )
     }
   }
 }

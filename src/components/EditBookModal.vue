@@ -5,6 +5,7 @@
         <div class="modal-container">
           <div class="modal-header">
             <h2 class="modal-title">Edit '{{ bookTitle }}' Book Information</h2>
+            <div class="popup-close" @click="$emit('close')">×</div>
           </div>
 
           <div class="modal-body">
@@ -73,18 +74,34 @@ export default {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
     transition: all .3s ease-in-out;
     font-family: 'Nunito', sans-serif;
+    position: relative;
   }
 
-  .modal-header .modal-title {
-    margin-bottom: 24px;
-    color: black;
-    font-size: 20px;
-    line-height: 1.5em;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 600;
-    border-bottom: 1px solid #eef2f7;
-    padding-bottom: 8px;
+  .modal-header {
+    .modal-title {
+      margin-bottom: 24px;
+      color: black;
+      font-size: 20px;
+      line-height: 1.5em;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
+      border-bottom: 1px solid #eef2f7;
+      padding-bottom: 8px;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      cursor: pointer;
+      font-size: 26px;
+      font-weight: bold;
+      line-height: .5em;
+      color: #98a6ad;
+      transition: all .3s;
+    }
   }
+  
 
   label {
     margin-bottom: 8px;
