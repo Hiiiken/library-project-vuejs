@@ -45,7 +45,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .modal-mask {
     position: fixed;
     z-index: 9998;
@@ -71,54 +71,99 @@ export default {
     background-color: white;
     border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-    transition: all 0.3s ease;
-    font-family: 'Nunito Sans', sans-serif;
+    transition: all .3s ease-in-out;
+    font-family: 'Nunito', sans-serif;
   }
 
   .modal-header .modal-title {
-    margin-top: 0;
-    color: #6c757d;
+    margin-bottom: 24px;
+    color: black;
+    font-size: 20px;
+    line-height: 1.5em;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    border-bottom: 1px solid #eef2f7;
+    padding-bottom: 8px;
   }
 
-  .modal-body form {
-    text-align: left;
-    padding: 16px 16px 0;
+  label {
     margin-bottom: 8px;
+    display: inline-block;
+    color: #98a6ad;
   }
 
-  .modal-body form label {
-    font-size: 12px;
-    margin-bottom: 8px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: .5px;
-  }
-
-  .modal-body input, select {
+  input {
     width: 100%;
-    box-sizing: border-box;
-    margin: 0 0 16px;
+    outline: none;
+    height: 46px;
+    padding-left: 15px;
+    border: 1px solid #98a6ad;
+    margin-bottom: 20px;
+    border-radius: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    color: black;
+    font-weight: 500;
+
+    &:focus {
+      background-color: #f8f8f8;
+    }
+  }
+
+  select {
+    width: 100%;
+    outline: none;
+    height: 46px;
+    padding-left: 10px;
+    border: 1px solid #98a6ad;
+    margin-bottom: 20px;
+    border-radius: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    color: black;
+    font-weight: 500;
+
+    &:focus {
+      background-color: #f8f8f8;
+    }
   }
 
   .modal-footer {
     display: flex;
     align-items: center;
-  }
+    margin-top: 8px;
 
-  .modal-footer button {
-    padding: 16px 40px;
-  }
+    button {
+      height: 46px;
+      border: none;
+      border-radius: 0;
+      font-family: 'Nunito', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      transition: .3s all;
+      padding: 0 32px;
+      cursor: pointer;
+    }
 
-  .modal-button-save {
-    background: lightskyblue;
-    margin-right: 8px;
-    color: black;
-  }
+    .modal-button-save {
+      background-color: #03b5e6;
+      margin-right: 16px;
+      color: white;
 
-  .modal-button-cancel {
-    background: #98a6ad;
-    border-color: #98a6ad;
-    color: white;
+      &:hover {
+        background-color: #00a3d0;
+      }
+    }
+
+    .modal-button-cancel {
+      background: #98a6ad;
+      // border-color: #98a6ad;
+      color: white;
+
+      &:hover {
+        opacity: .7;
+      }
+    }
   }
 
   /*

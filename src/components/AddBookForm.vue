@@ -27,7 +27,6 @@
             <div class="book-list">
               <ul class="grid">
                   <single-book
-                    class="col col-4 col-lg book-card"
                     v-for="(book, index) in myLibrary"
                     v-bind:key="book.id"
                     :book-title="book.title"
@@ -143,6 +142,30 @@ export default {
 </script>
 
 <style lang="scss">
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;1,400&display=swap');
+
+  // PLACEHOLDER STYLES
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    color: #98a6ad;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    color: #98a6ad;;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    color: #98a6ad;;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    color: #98a6ad;;
+  }
+
   .sidebar {
     background-color: #313a46;
     height: 100vh;
@@ -151,7 +174,7 @@ export default {
     margin-right: 12px * -1;
 
     h2 {
-      color: #fff;
+      color: white;
     }
 
     .sidebar-widget {
@@ -181,6 +204,77 @@ export default {
           margin-top: 30px;
       }
     }
+
+    @media only screen and (max-width: 480px) {
+      padding: 30px 30px;
+    }
+  }
+
+  input {
+    width: 100%;
+    outline: none;
+    height: 46px;
+    padding-left: 15px;
+    border: 1px solid transparent;
+    margin-bottom: 20px;
+    border-radius: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    color: black;
+    font-weight: 500;
+
+    &:focus {
+      background-color: #f8f8f8;
+    }
+  }
+
+  select {
+    width: 100%;
+    outline: none;
+    height: 46px;
+    padding-left: 10px;
+    border: 1px solid transparent;
+    margin-bottom: 20px;
+    border-radius: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    color: black;
+    font-weight: 500;
+  }
+
+  button[type=submit], button[type=button] {
+    width: 100%;
+    height: 46px;
+    border: none;
+    border-radius: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    color: white;
+    font-weight: 600;
+    background-color: #03b5e6;
+    transition: .3s all;
+
+    &:hover {
+      background-color: #00a3d0;
+      cursor: pointer;
+    }
+  }
+
+  .sec-title {
+    font-size: 26px;
+    line-height: 1.3em;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-family: 'Nunito', sans-serif;
+    color: black;
+  }
+
+  .main-content {
+    padding: 50px 40px;
+    margin-left: 12px * -1;
+    margin-right: 12px * -1;
+
+    
 
     @media only screen and (max-width: 480px) {
       padding: 30px 30px;
