@@ -22,7 +22,8 @@
           <div class="sidebar-widget widget-library-log">
             <library-log
               :my-library="myLibrary.length"
-              
+              :books-read="booksRead()"
+              :books-not-read="booksNotRead()"
             >
             </library-log>
           </div>
@@ -124,6 +125,24 @@ export default {
           status: bk.status
         }
       )
+    },
+    booksRead() {
+      let count = 0
+      this.myLibrary.forEach((book, index) => {
+        if(book.status === 'Read') {
+          count++
+        }
+      })
+      return count
+    },
+    booksNotRead() {
+      let count = 0
+      this.myLibrary.forEach((book, index) => {
+        if(book.status === 'Not Read') {
+          count++
+        }
+      })
+      return count
     }
   }
 }

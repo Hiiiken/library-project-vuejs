@@ -7,11 +7,11 @@
     </div>
     <div class="library-log--single">
       <img src="../assets/check.svg" alt="books icon">
-      <h4>Books read : <span>--</span></h4>
+      <h4>Books read : <span>{{ booksRead }}</span></h4>
     </div>
     <div class="library-log--single">
       <img src="../assets/x.svg" alt="books icon">
-      <h4>Books not read : <span>--</span></h4>
+      <h4>Books not read : <span>{{ booksNotRead }}</span></h4>
     </div>
   </div>
 </template>
@@ -19,12 +19,7 @@
 <script>
 export default {
   name: 'LibraryLog',
-  props: ['myLibrary'],
-  methods: {
-    booksRead() {
-
-    }
-  }
+  props: ['myLibrary', 'booksRead', 'booksNotRead'],
 }
 </script>
 
