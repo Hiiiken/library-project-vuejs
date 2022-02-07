@@ -103,6 +103,10 @@ export default {
           status: this.bookStatus
         }
       )
+      this.bookTitle = ''
+      this.bookAuthor = ''
+      this.bookPages = ''
+      this.bookStatus = ''
     },
     deleteBook(id, index) {
       if(confirm('Are you sure?')) {
