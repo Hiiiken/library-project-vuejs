@@ -43,7 +43,8 @@
                     :book-pages="book.pages"
                     :book-status="book.status"
                     @delete="deleteBook(book, index)"
-                    @save="saveEditedBook(book, index)">
+                    >
+                    <!-- @save="saveEditedBook(book, index)"> -->
                   </single-book>
               </ul>
             </div>

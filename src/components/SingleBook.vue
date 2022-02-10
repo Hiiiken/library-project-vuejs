@@ -20,7 +20,9 @@
           :book-status="bookStatus"
           v-if="showModal" 
           @close="showModal = false"
-          @save="$emit('save')">
+          @save="onSave">
+          <!-- @save="onSave"> -->
+          <!-- @save="$emit('save')"> -->
         </edit-book-modal>
       </div>
     </li>
@@ -47,6 +49,10 @@ export default {
   methods: {
     editBook() {
       this.showModal = true
+    },
+    onSave(value) {
+      console.log(value)
+      this.newbookTitle = value
     }
   }
 }

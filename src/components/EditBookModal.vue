@@ -26,7 +26,7 @@
           </div>
 
           <div class="modal-footer">
-            <button class="modal-button-save" @click="$emit('save')">
+            <button class="modal-button-save" @click="saveTest">
               Save
             </button>
             <button class="modal-button-cancel" @click="$emit('close')">
@@ -42,7 +42,12 @@
 <script>
 export default {
   name: 'EditBookModal',
-  props: ['bookTitle', 'bookAuthor', 'bookPages', 'bookStatus']
+  props: ['bookTitle', 'bookAuthor', 'bookPages', 'bookStatus'],
+  methods: {
+    saveTest(event) {
+      this.$emit('save', this.bookTitle )
+    }
+  }
 }
 </script>
 
